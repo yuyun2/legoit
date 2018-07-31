@@ -1,0 +1,271 @@
+<title>LEGOIT</title>
+
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color:black
+  ;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 60%;
+  height: 80%
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: #FFFFFF;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+</style>
+
+<h2 id="mcetoc_1caekiftl0" style="text-align: center;"><span style="text-decoration: underline;"><strong><img src="../static/logo-and-button/logo_black.jpg" alt="" width="394" height="126" /></strong></span></h2>
+
+<hr />
+
+<p style="text-align: center;">&nbsp;</p>
+
+<table style="width: 758px; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="width: 307px;"><img id="pic_before" src={{lego_before}} alt={{lego_before}} width="307" height="291"/></td>
+
+<td style="width: 117px;"><button id="legofy_btn" onclick="legofy()" type="button"><img src="../static/logo-and-button/legofy_v2.png" alt="" width="120" height="50" style="border:none;"></button></td>
+
+<script>
+function legofy() {
+  var pic_path = '{{ lego_after }}';
+    document.getElementById('pic_after').src = pic_path;
+}
+</script>
+<td style="width: 314px;"><img id="pic_after" src="../static/logo-and-button/blank.png"  style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" alt="Legofy it!!" width="311" height="295" /></td>
+</div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <img src={{lego_after}} style="width:100%;height:700px;" >
+    </div>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+    
+    
+  </div>
+</div>
+
+</tr>
+</tbody>
+</table>
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+  var select = document.getElementById('select_id');
+  select.style.visibility = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+  var select = document.getElementById('select_id');
+  select.style.visibility = 'visible';
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+
+</tr>
+</tbody>
+</table>
+
+<table style="width: 758px; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+
+
+<td style="width: 307px;">
+
+<p>&nbsp;</p>
+
+<p>
+<p>Select other image:</p>
+<select>
+{% for pic in samples %}
+  <option value="{{pic}}">{{pic}}</option>
+{% endfor %}
+</select>
+</p>
+
+<p>&nbsp;</p>
+
+<p>
+ <form action="upload" method="post" enctype="multipart/form-data">
+ <p>Upload your own image:</p>
+    <p><input type="file" name="file" id="file"></p>
+    <p><button type="submit" name="submit">Submit</button></p>
+</form>
+</p>
+
+
+<form class="form-inline" method="POST" action="{{ url_for('upload_size') }}">
+  <div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Select image size:</span>
+            <select id="select_id" name="comp_select" class="selectpicker form-control">
+              {% for s in sizes %}
+              <option value="{{ s }}">{{ s }}</option>
+              {% endfor %}
+            </select>
+    </div>
+    <button type="submit" class="btn btn-default">Go</button>
+  </div>
+</form>
+<a href="service">Purchase</a>
+
+<br /><br /><br /><br />
+</td>
+
+</tr>
+</tbody>
+</table>
+
+{% endblock %}
+
+

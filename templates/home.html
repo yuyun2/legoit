@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+	<style >
+		.upload-btn-wrapper {
+  								position: relative;
+  								overflow: hidden;
+  								display: inline-block;
+							}
+
+		.upload-btn-wrapper {
+  								position: relative;
+  								overflow: hidden;
+  								display: inline-block;
+							}
+
+		.btn {
+  				border: 2px white;
+  				color: white;
+  				background-color: #df7366;
+  				padding: 8px 10px;
+  				border-radius: 8px;
+  				font-size: 20px;
+  				font-weight: bold;
+			}
+
+		.upload-btn-wrapper input[type=file] {
+  												font-size: 100px;
+  												position: absolute;
+  												left: 0;
+  												top: 0;
+  												opacity: 0;
+											}
+
+		.selectpicker{
+  						border: 2px white;
+  						/*color: rgb(236, 117, 135);*/
+  						color: #df7366;
+  						/*background-color: rgb(236, 117, 135);*/
+  						padding: 8px 10px;
+  						border-radius: 8px;
+  						font-size: 20px;
+  						font-weight: bold;
+					}
+
+	</style>
+
+	<head>
+		<title>Legoit</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" >
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118673693-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-118673693-1');
+		</script>
+
+	</head>
+	<body class="no-sidebar">
+		{% include 'includes/_messages.html' %}
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>　　<br>　　
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								{% if session.logged_in %}
+								<li><a href="/">Home</a></li>
+              					<li><a href="/about">About</a></li>
+              					<li><a href="/gallery">Gallery</a></li>
+              					<li><a href="/filter">Filter</a></li>
+              					<li><a href="/about">About</a></li>
+              					<li><a href="/logout">Logout</a></li>
+            					{% else %}
+								<li><a href="/">Home</a></li>
+								<li><a href="/about">About</a></li>
+								<li><a href="/gallery">Gallery</a></li>
+								<li><a href="/filter">Filter</a></li>
+								<li><a href="/login">Login</a></li>
+								<li><a href="/register">Register</a></li>
+								{% endif %}
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+
+
+						<article id="main" class="special">
+
+							<header>
+								<h2><font size="6.5">Convert Pic To Lego Bricks</font></h2>
+							</header>
+							<a href="/gallery" class="image featured"><img src="../static/images/homepage_legofy.png"></a>
+
+							<header>
+								<h2><font size="6.5">Add Filters to Your Legofied Pic</font></h2>
+							</header>
+							<a href="/filter" class="image featured"><img src="../static/images/homepage_filter.png"></a>
+							
+							<header id='target'>
+							{% if scroll %}
+							<script>
+							    document.getElementById('{{ scroll }}').scrollIntoView();
+							    // or
+							    document.location.hash = '#' + '{{ scroll }}';
+							</script>
+							{% endif %}
+
+								<h2><font size="6.5">Legofy Your Own Picture! </font></h2>
+							</header>
+
+							<p>
+								<center>
+
+<!-- 									<form class="form-inline" method="POST" action="{{ url_for('upload_config') }}" style="width: 15%; padding-top: 1em">
+  										<div class="form-group">
+	  										<div class="input-group">
+	  											<span class="input-group-addon">Select size</span>
+			  									<select id="select_size" name="comp_select" class="selectpicker form-control" onchange="this.form.submit()">
+				  									{% for s in sizes %}
+				  									<option value="{{ s }}">{{ s }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+           							</form>
+
+           							<form class="form-inline" method="POST" action="{{ url_for('upload_config') }}" style="width: 15%; padding-top: 1em">
+  										<div class="form-group">
+	  										<div class="input-group">
+	  											<span class="input-group-addon">Select filter</span>
+			  									<select id="select_filter" name="comp_select" class="selectpicker form-control" onchange="this.form.submit()">
+													{% for filter in filters %}
+													<option value="{{ filter }}">{{ filter }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+           							</form> -->
+
+									<form class="form-inline" method="POST" style="width: 15%; padding-top: 1em">
+  										<div class="form-group">
+	  										<div class="input-group">
+			  									<select id="select_size" name="comp_select" class="selectpicker form-control" onchange="javascript:submit_size();">
+													<option>Select Size</option>
+													{% for s in sizes %}
+													<option value="{{ s }}">{{ s }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+           							</form>
+
+									<form class="form-inline" method="POST" style="width: 15%; padding-top: 1em">
+  										<div class="form-group">
+	  										<div class="input-group">
+			  									<select id="select_filter" name="comp_select" class="selectpicker form-control" onchange="javascript:submit_filter();">
+                    								<option> Select Filter</option>
+                    								{% for f in filters %}
+				  									<option value="{{ f }}">{{ f }}</option>
+													{% endfor %}
+												</select>
+											</div>
+										</div>
+           							</form>
+
+<!-- 									<p>
+										<form action="javascript:submit_img();" enctype = "multipart/form-data">
+											<div class="upload-btn-wrapper">
+	  											<button id="submit-config" type = "submit" class="btn">Submit Config</button>
+											</div>
+										</form>
+									</p> -->
+
+									<p>
+									<form action="upload" method="post" method="post" enctype="multipart/form-data">
+										<div class="upload-btn-wrapper">
+  											<button class="btn">Upload Image</button>
+  										<input type="file" name="file" onchange="this.form.submit()"/>
+										</div>
+									</form>
+									</p>
+
+								</center>
+							</p>
+
+							<div align="center" id='target'>
+							<a class="image featured" style="width: 50%;"><img src={{pic}}> </a>
+							</div>
+
+							<div align="center" ><a href="https://twitter.com/intent/tweet?text=I%20just%20purchased%20a%20Legofied%20image%20from%20www.legoit.us,%20check%20this%20website%20out! ">
+							share on twitter!</a ></div>
+
+
+							<div align="center">
+							<a href="/service" class="button">Check How To Build It</a>
+							<div align="center">
+
+							
+						</article>
+
+						<hr />
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Contact -->
+									<section class="contact">
+										<ul class="icons">
+											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+											<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+										</ul>
+									</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Legoit. All rights reserved.</li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+			<script>
+				var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+				var submit_size = function(e) {
+
+					var select_size = document.getElementById("select_size");
+					var size = select_size[select_size.selectedIndex].value;
+
+					$.getJSON($SCRIPT_ROOT + '/submit_size', {
+					img_size: size
+					}, function(data) {
+						console.log(data.result, data.size);
+					});
+				};
+
+				var submit_filter = function(e) {
+
+					var select_filter = document.getElementById("select_filter");
+					var filter = select_filter[select_filter.selectedIndex].value;
+
+					$.getJSON($SCRIPT_ROOT + '/submit_filter', {
+					img_filter: filter
+					}, function(data) {
+						console.log(data.result, data.filter);
+					});
+				};
+
+				var submit_config = function(e) {
+
+					var select_size = document.getElementById("select_size");
+					var size = select_size[select_size.selectedIndex].value;
+
+					var select_filter = document.getElementById("select_filter");
+					var filter = select_filter[select_filter.selectedIndex].value;
+
+					if(size == "Select Size"){
+						alert("Please choose a size!");
+						return false;
+					};
+					if(filter === "Select Filter"){
+						alert("Please choose a filter!");
+						return false;
+					};
+					$.getJSON($SCRIPT_ROOT + '/submit_size_filter', {
+					img_size: size, img_filter: filter
+					}, function(data) {
+						console.log(data.result, data.size, data.filter);
+					});
+				};
+
+			//$('button#submit-img').on('click', submit_img);
+		</script>
+	</body>
+</html>

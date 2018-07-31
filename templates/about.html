@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Legoit</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" >
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118673693-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-118673693-1');
+		</script>
+
+	</head>
+	<body class="no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>　　<br>　　
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								{% if session.logged_in %}
+								<li><a href="/">Home</a></li>
+              					<li><a href="/about">About</a></li>
+              					<li><a href="/gallery">Gallery</a></li>
+              					<li><a href="/filter">Filter</a></li>
+              					<li><a href="/about">About</a></li>
+              					<li><a href="/logout">Logout</a></li>
+            					{% else %}
+								<li><a href="/">Home</a></li>
+								<li><a href="/about">About</a></li>
+								<li><a href="/gallery">Gallery</a></li>
+								<li><a href="/filter">Filter</a></li>
+								<li><a href="/login">Login</a></li>
+								<li><a href="/register">Register</a></li>
+								{% endif %}
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+
+				<div class="wrapper style1">
+					<div class="container">
+					<article id="main" class="special">
+						<header>
+							<p>Founded on March 2018, Legoit gives people power to convert any pictures into LEGO Models.</p>
+							<h2>On Legoit, you are able to:</h2>
+
+
+							<p><strong>Upload your own picture</strong></p>
+							<center><a class="image featured" style="width:40%" >
+								<img src="../static/images/tiger_before.jpg" alt="" /></a></center>
+
+							<p><strong>Choose the filter you like</strong></p>
+							<center><a class="image featured" style="width:40%" >
+								<img src="../static/images/tiger_filter.png" alt="" /></a>
+							</center>
+
+							<p><strong>Convert the picture to a LEGO assemble manual</strong></p>
+							<center><a class="image featured" style="width:40%" >
+								<img src="../static/images/tiger_after.png" alt="" /></a>
+							</center>
+
+							<p><strong>Get the cheapest LEGO bricks seller links</strong></p>
+							<center><a class="image featured" style="width:40%" >
+								<img src="../static/images/urls.png" alt="" /></a>
+							</center>
+						</header>
+
+						<hr />
+						
+						<header>
+							<h2>Developers</h2>
+						</header>
+
+						<div class="row">
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/beiming-liu/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Beiming', 'event_label' : 'linkedin', 'value' : 10 });"><img src="../static/images/beiming.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/beiming-liu/" onclick="gtag('event', 'reference', {'event_category' : 'Beiming', 'event_label' : 'linkedin', 'value' : 10 });">Beiming Liu</a></h3>
+								</header>
+							</article>
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/yutian1/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Yu', 'event_label' : 'linkedin', 'value' : 10 });">
+									<img src="../static/images/yu.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/yutian1/" onclick="gtag('event', 'reference', {'event_category' : 'Yu', 'event_label' : 'linkedin', 'value' : 10 });">Yu Tian</a></h3>
+								</header>
+							</article>
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/chengcheng-xu-42444b38/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Chengcheng', 'event_label' : 'linkedin', 'value' : 10 });">
+									<img src="../static/images/chengcheng.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/chengcheng-xu-42444b38/" onclick="gtag('event', 'reference', {'event_category' : 'Chengcheng', 'event_label' : 'linkedin', 'value' : 10 });">Chengcheng Xu</a></h3>
+								</header>
+							</article>
+						</div>
+
+						<div class="row">
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/chenxi-ge/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Chenxi', 'event_label' : 'linkedin', 'value' : 10 });">
+									<img src="../static/images/chenxi.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/chenxi-ge/" onclick="gtag('event', 'reference', {'event_category' : 'Chenxi', 'event_label' : 'linkedin', 'value' : 10 });">Chenxi Ge</a></h3>
+								</header>
+							</article>
+
+							<article class="4u 12u(mobile) special">
+								<a href="http://kyna-ji.com" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Feiran', 'event_label' : 'linkedin', 'value' : 10 });"><img src="../static/images/feiran.png" alt="" /></a>
+								<header>
+									<h3><a href="http://kyna-ji.com" onclick="gtag('event', 'reference', {'event_category' : 'Feiran', 'event_label' : 'linkedin', 'value' : 10 });">Kyna Ji</a></h3>
+								</header>
+							</article>
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/jadeyun/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Jade', 'event_label' : 'linkedin', 'value' : 10 });">
+									<img src="../static/images/jade.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/jadeyun/" onclick="gtag('event', 'reference', {'event_category' : 'Jade', 'event_label' : 'linkedin', 'value' : 10 });">Jade Yun</a></h3>
+								</header>
+							</article>
+						</div>
+
+
+						<div class="row">
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/caraqin/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Cara', 'event_label' : 'linkedin', 'value' : 10 });"><img src="../static/images/cara.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/caraqin/" onclick="gtag('event', 'reference', {'event_category' : 'Cara', 'event_label' : 'linkedin', 'value' : 10 });">Cara Qin</a></h3>
+								</header>
+							</article>
+
+							<article class="4u 12u(mobile) special">
+								<a href="https://www.linkedin.com/in/songzizhen/" class="image featured" onclick="gtag('event', 'reference', {'event_category' : 'Zizhen', 'event_label' : 'linkedin', 'value' : 10 });"><img src="../static/images/zizhen.png" alt="" /></a>
+								<header>
+									<h3><a href="https://www.linkedin.com/in/songzizhen/" onclick="gtag('event', 'reference', {'event_category' : 'Zizhen', 'event_label' : 'linkedin', 'value' : 10 });">Amber Song</a></h3>
+								</header>
+							</article>
+
+
+						</div>
+					</article>
+				</div>
+		</div>
+
+
+
+      <!-- Footer -->
+        <div id="footer">
+          <div class="container">
+            <div class="row">
+              <div class="12u">
+
+                <!-- Contact -->
+                  <section class="contact">
+                    <ul class="icons">
+                      <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                      <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                      <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                      <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+                    </ul>
+                  </section>
+
+                <!-- Copyright -->
+                  <div class="copyright">
+                    <ul class="menu">
+                      <li>&copy; Legoit. All rights reserved.</li>
+                    </ul>
+                  </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+
+    <!-- Scripts -->
+      <script src="../static/assets/js/jquery.min.js"></script>
+      <script src="../static/assets/js/jquery.dropotron.min.js"></script>
+      <script src="../static/assets/js/jquery.scrolly.min.js"></script>
+      <script src="../static/assets/js/jquery.onvisible.min.js"></script>
+      <script src="../static/assets/js/skel.min.js"></script>
+      <script src="../static/assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="../static/assets/js/main.js"></script>
+  </body>
+</html>
